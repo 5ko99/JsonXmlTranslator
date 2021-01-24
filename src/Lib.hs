@@ -1,11 +1,14 @@
 module Lib
   ( someFunc,
+    XMLParser.parse,
   )
 where
 
 import Data.Either
 import Data.JsonObject
 import Data.XMLObject
+import qualified Parsers.JsonParser as JSONParser
+import qualified Parsers.XMLParser as XMLParser
 import qualified Stringify.Json as JSON
 import qualified Stringify.Xml as XML
 

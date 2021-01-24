@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 871521d715f494be1e63965f0c81ed48d8344b151e96a801d4e3429985d6111d
+-- hash: ac3b67bb98b61eac891b9d4bbd653694f970a5bc60f0223a87e578772fc6572e
 
 name:           JsonXmlTranslator
 version:        0.1.0.0
@@ -31,8 +31,13 @@ library
       Data.XMLObject
       Helper
       Lib
+      Parsers.JsonParser
+      Parsers.ParserUtils
+      Parsers.XMLParser
       Stringify.Json
       Stringify.Xml
+      Translation.ToJson
+      Translation.ToXml
   other-modules:
       Paths_JsonXmlTranslator
   hs-source-dirs:
