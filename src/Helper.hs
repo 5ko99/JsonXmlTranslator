@@ -23,3 +23,12 @@ myMapForJson f n flag (x : xs) = f n flag x : myMapForJson f n flag xs
 isEmpty :: [a] -> Bool
 isEmpty [] = True
 isEmpty _ = False
+
+isSingleton :: [a] -> Bool
+isSingleton [a] = True
+isSingleton _ = False
+
+unique :: Eq a => [a] -> Bool
+unique [] = True
+unique [x] = True
+unique (x : y : xs) = x /= y && unique (y : xs)

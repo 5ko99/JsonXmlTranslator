@@ -34,6 +34,9 @@ newtype Parser a = Parser
   { runParser :: String -> ParserResult a
   }
 
+getValue :: ParserSuccess a -> a
+getValue ParserSuccess {..} = result
+
 abortParser :: String -> Int -> Parser a
 abortParser error pos = Parser $ \_ -> abort error pos
 

@@ -7,7 +7,10 @@ data TagElement = TagElement
     attributes :: [Attribute],
     children :: [XMLObject]
   }
-  deriving (Show, Read, Eq)
+  deriving (Show, Read)
+
+instance Eq TagElement where
+  (TagElement name1 _ _) == (TagElement name2 _ _) = name1 == name2
 
 data XMLObject
   = Text String
