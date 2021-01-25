@@ -21,8 +21,7 @@ myMapForJson _ _ _ [] = []
 myMapForJson f n flag (x : xs) = f n flag x : myMapForJson f n flag xs
 
 isEmpty :: [a] -> Bool
-isEmpty [] = True
-isEmpty _ = False
+isEmpty = null
 
 isSingleton :: [a] -> Bool
 isSingleton [a] = True
