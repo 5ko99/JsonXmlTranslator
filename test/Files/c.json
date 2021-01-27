@@ -1,0 +1,19 @@
+{
+  "body": {
+    "-onlod": "alabal()",
+    "-src": "test/",
+    "0:p": {
+      "-style": "background: red",
+      "": "test"
+    },
+    "1:p": {
+    },
+    "2:textarea": {
+    },
+    "3:div": {
+      "p": {
+        "": "test"
+      }
+    }
+  }
+}

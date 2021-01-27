@@ -5,7 +5,7 @@ import Data.XMLObject
     TagElement (TagElement),
     XMLObject (..),
   )
-import Helper
+import Helper (myMap, printSpaces, toEitherList)
 
 attributeToString :: Attribute -> String
 attributeToString (a, b) = ' ' : a ++ "=" ++ "\"" ++ b ++ "\""
@@ -15,6 +15,23 @@ attributesToStrings = map attributeToString
 
 attributesToString :: [Attribute] -> String
 attributesToString = concat . attributesToStrings
+
+listOfTextsToString :: Int -> String -> [Attribute] -> [XMLObject] -> Either String String
+listOfTextsToString _ _ _ [] = Right []
+listOfTextsToString spaces name attributes (Text x : xs) = do
+  xsResult <- listOfTextsToString spaces name attributes xs
+  Right $
+    printSpaces spaces
+      ++ '<' :
+    name
+      ++ attributesToString attributes
+      ++ ">"
+      ++ x
+      ++ "</"
+      ++ name
+      ++ ">\n"
+      ++ xsResult
+listOfTextsToString _ _ _ (Element _ : _) = Left "Error:Expected XMLObject Text!"
 
 tagElementToString :: Int -> TagElement -> Either String String
 tagElementToString n (TagElement str atr [Text text]) = do
@@ -29,6 +46,9 @@ tagElementToString n (TagElement str atr [Text text]) = do
       ++ "</"
       ++ str
       ++ ">\n"
+tagElementToString n (TagElement str atr children@(Text _ : _)) = do
+  -- case for array of text elements
+  listOfTextsToString n str atr children
 tagElementToString n (TagElement str atr children) = do
   others <- toEitherList (myMap xmlToString (n + 1) children)
   return $
