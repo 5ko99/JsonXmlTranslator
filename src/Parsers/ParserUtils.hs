@@ -163,6 +163,11 @@ commentParser = do
   ws
   return ""
 
+-- doctypeParser :: Parser String
+-- doctypeParser = do
+--   ws
+--   string "<!DOCTYPE"
+
 --end of my code
 
 ws :: Parser String

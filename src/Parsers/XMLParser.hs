@@ -3,7 +3,7 @@
 module Parsers.XMLParser (parse) where
 
 import Control.Applicative
-  ( Alternative (many, some, (<|>)),
+  ( Alternative (many, (<|>)),
     Applicative ((*>), (<*), (<*>)),
     (<$>),
   )
@@ -67,4 +67,4 @@ xmlParser :: Parser XMLObject
 xmlParser = tagParser <|> textParser
 
 parse :: String -> ParserResult XMLObject
-parse  = runParser xmlParser
+parse = runParser xmlParser
